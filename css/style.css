@@ -17,13 +17,18 @@ background-color: rgba(0,0,0,0.938);
     font-size: 14px;
 }
 
- /* main{ 
+ main{ 
     position: absolute;
     top: 0%;
     z-index: 0;
-} */
+} 
 .carousel-control-prev, .carousel-control-next {
 
     width: 8%;
 
+}
+
+.site-wrapper{
+
+    height: 780px;
 }
