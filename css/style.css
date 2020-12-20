@@ -4,6 +4,11 @@ padding: 0%;
 background-color: rgba(0,0,0,0.938);
 
 }
+.bfont{
+           font-size: 1.4em;
+			font-style: italic;
+
+}
 
 .navbar{
 
@@ -86,6 +91,12 @@ width: 1117px;
            margin-top: 18px;
             
         }    
+
+        .bfont{
+
+            font-size: 0.7em;
+			font-style: italic;
+        }
 
     #form-cont{
         width: 250px;
