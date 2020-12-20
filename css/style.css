@@ -58,3 +58,21 @@ width: 1117px;
 width: 1117px;
 
 }
+
+@media only screen and (max-device-width:320px){
+.site-wrapper{
+
+    height: 200px;
+}
+
+.col-md-4{
+
+    margin: 5% 0%;
+
+    }
+    .carousel-control-next, .carousel-control-prev{
+
+        display: none;
+    }
+}
+  
