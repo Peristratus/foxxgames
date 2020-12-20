@@ -74,5 +74,26 @@ width: 1117px;
 
         display: none;
     }
+
+    #fc1{
+           width: 250px;
+            
+        }    
+
+        #fc2{
+           width: 250px;
+           margin-top: 18px;
+            
+        }    
+
+    #form-cont{
+        width: 250px;
+
+       }   
+       #exampletextsreacontrol{
+           width: 250px;
+
+            }
+    
 }
   
