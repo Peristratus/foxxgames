@@ -13,7 +13,10 @@
         <script>
 
             const FPS = 30; /*Frames per second*/
-            const FRICTION = 0.7;// Frection coefficient of space (0 = no friction, 1= lots of frection)
+            const FRICTION = 0.7;// Frection coefficient of space (0 = no friction, 1= lots of friction)
+            const ROIDS_NUM = 3; // Starting number of asteriods(note)
+            const ROID_SIZE = 100;// Starting  size of Asteroids in pixels
+            const ROIDS_SPD = 50; // Max starting speed of asteriods in pixels per second
             const SHIP_SIZE = 30; // ship height in pixels
             const SHIP_THRUST = 5; //acceleration of the ship in pixels per second per second 
             const TURN_SPEED =360; //turn speed in degrees per second
@@ -36,12 +39,31 @@
                    }
                  }
 
+                 // set up asteriod
+
+                 var roids = []
+                 createAsteroidsBelt();
+
             // set up event handelers
             document.addEventListener("keydown", keyDown);
             document.addEventListener("keyup", keyUp);
 
             /*setup the game loop*/
             setInterval(update, 1000/FPS);
+
+            //  Asteroid belt
+
+            function createAsteroidsBelt() {
+                roids =[];
+                var x,y;
+                for (var i = 0; i < ROIDS_NUM; i++){
+                    x = Math.floor(Math.random()* canva.width);
+                    y = Math.floor(Math.random()* canva.height);
+                    roids.push(newAsteriod(x,y));
+                }
+
+
+            }
 
             function keyDown(/* @type {keyboardEvent}*/ ev){
             switch(ev.keyCode){
@@ -80,6 +102,21 @@
 
                 }
             }
+              function newAsteriod(x,y){
+                 var roid ={
+                   x: x,
+                   y: y,
+                   xv: Math.random()*ROIDS_SPD /FPS * (Math.random() < 0.5 ? 1 : -1),
+                   yv: Math.random()*ROIDS_SPD /FPS * (Math.random() < 0.5 ? 1 : -1),
+                   r:ROID_SIZE /2,
+                   a: Math.random()*math.PI *2, // In radians
+                   vert: Math.floor(Math.random() * (ROIDS_VERT + 1)+ ROIDS_VERT /2)
+
+
+
+                 };
+                 return roid;
+              }
 
             function update(){
              /*Draw Space*/
@@ -147,6 +184,23 @@
              ctx.closePath();
              ctx.stroke();
 
+             //draw the Asteriod
+             ctx.strokeStyle = "slategray";
+             ctx.lineWidth =SHIP_SIZE / 20;
+             for (var i =0; i < roids.length; i++){
+
+              // draw a path 
+
+
+              // draw the polygon
+
+
+              // move the Asteroid
+
+              // handel edge of screen
+
+
+             }
 
 
              /*rotate Ship*/
