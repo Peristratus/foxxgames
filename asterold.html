@@ -13,10 +13,18 @@
         <script>
 
             const FPS = 30; /*Frames per second*/
+            const SHIP_SIZE = 30; // ship height in pixels
 
             /* @(HTMLCanvasElement*/
             var canv = document.getElementById("ganmeCanvas");
             var ctx = canv.getContext('2d');
+
+            var ship ={
+                   x: canva.width/2,
+                   y: canva.height/2,
+                   r:  SHIP_SIZE /2,
+                   a: 90 / 180 * Math.PI //convert to radians
+                 }
 
             /*setup the game loop*/
             setInterval(update, 1000/FPS);
@@ -28,7 +36,19 @@
 
 
              /*Draw Ship*/
+            ctx.strokeStyle= "white",
+            ctx.lengthWidth = SHIP_SIZE /20;
+            ctx.beginPath();
+            ctx.moveTo( //nose of the ship
+                  ship.x + ship.r * Math.cos(ship.a),
+                  ship.y - ship.r * Math.sin(ship.a)
+            );
 
+             ctx.lineTo(
+             ship.x - ship.r * (Math.cos(ship.a) + Math.sin(ship.a)),
+             ship.y + ship.r * (Math.sin(ship.a) - Math.cos(ship.a))
+
+             );
 
 
 
