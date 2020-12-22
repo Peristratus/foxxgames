@@ -15,7 +15,7 @@
             const FPS = 30; /*Frames per second*/
             const FRICTION = 0.7;// Frection coefficient of space (0 = no friction, 1= lots of friction)
             const ROIDS_JAG =0.4; // Jaggedness of the asteroid (0== none, 1 =lots)
-            const ROIDS_NUM = 3 ; // Starting number of asteriods(note)
+            const ROIDS_NUM = 10 ; // Starting number of asteriods(note)
             const ROID_SIZE = 100;// Starting  size of Asteroids in pixels
             const ROIDS_SPD = 50; // Max starting speed of asteriods in pixels per second
             const ROIDS_VERT = 10;// average number of vertices on each Asteriod
@@ -129,9 +129,6 @@
                  for (var i =0; i < roid.vert; i++){
                      roid.offs.push(Math.random() * ROIDS_JAG * 2 + 1 -  ROIDS_JAG);
                  }
-
-
-
                  return roid;
               }
 
@@ -160,8 +157,6 @@
              ship.y + ship.r * 6/3 * Math.sin(ship.a)
 
              );
-             ctx.closePath();
-             ctx.stroke();
 
               ctx.lineTo( // rear right
              ship.x - ship.r * (2/3 * Math.cos(ship.a) - 0.5 * Math.sin(ship.a)),
@@ -220,31 +215,42 @@
               // draw a path 
                ctx.beginPath();
                ctx.moveTo(
-                   x + r * Math.cos(a),
-                   y + r * Math.sin(a)
+                   x + r * offs[0]* Math.cos(a),
+                   y + r * offs[0]* Math.sin(a)
     
-
                );
 
               // draw the polygon
-                for (var j = 0; j < vert; j++) {
+                for (var j = 1; j < vert; j++) {
                 ctx.lineTo(
-                   x + r *Math.cos(a + j * Math.PI * 2 / vert),
-                   y + r *Math.sin(a + j * Math.PI * 2 / vert)  
+                   x + r * offs[j] * Math.cos(a + j * Math.PI * 2 / vert),
+                   y + r * offs[j] * Math.sin(a + j * Math.PI * 2 / vert)  
 
                 );
-
 
             }
              ctx.closePath(); 
              ctx.stroke(); 
 
-              // move the Asteroid
+              // move the asteroid
+                roids[i].x += roids[i].xv;
+                roids[i].y += roids[i].yv;
 
-              // handel edge of screen
+                // handle asteroid edge of screen
+                if (roids[i].x < 0 - roids[i].r) {
+                    roids[i].x = canv.width + roids[i].r;
+                } else if (roids[i].x > canv.width + roids[i].r) {
+                    roids[i].x = 0 - roids[i].r
+                }
+                if (roids[i].y < 0 - roids[i].r) {
+                    roids[i].y = canv.height + roids[i].r;
+                } else if (roids[i].y > canv.height + roids[i].r) {
+                    roids[i].y = 0 - roids[i].r
+                }
+            }
 
 
-             }
+            
 
 
              /*rotate Ship*/
