@@ -161,7 +161,7 @@
                 ship.thrust.y -= SHIP_THRUST * Math.sin(ship.a)/ FPS;
                 
                 // draw the thruster
-             if (!exploding) {
+             if (!exploding && blinkOn) {
                   ctx.fillStyle = "red";
                   ctx.strokeStyle= "yellow",
                   ctx.lengthWidth = SHIP_SIZE /100;
@@ -313,11 +313,13 @@
 
             // Check for asteriod collision
             if (!exploding) {
-               for (var i = 0; i < roids.length; i++) {
-                   if(distanceBetweenPoints(ship.x, ship.y, roids[i].x, roids[i].y)< ship.r + roids[i].r){
-                      explodeShip();
+                if (ship.blinkNum == 0) {
+                   for (var i = 0; i < roids.length; i++) {
+                        if(distanceBetweenPoints(ship.x, ship.y, roids[i].x, roids[i].y) < ship.r + roids[i].r){
+                         explodeShip();
                     }
                }
+            }
                /*rotate Ship*/
                ship.a += ship.rot;
 
@@ -326,11 +328,11 @@
                ship.y +=  ship.thrust.y;
             } else {
 
-                ship.exploadeTime--;
+                ship.explodeTime--;
                    
-                if (ship.exploadeTime == 0){
+                 if (ship.explodeTime == 0){
                     ship =newShip();
-                }
+                 }
             }
              // handel edge of screen
 
