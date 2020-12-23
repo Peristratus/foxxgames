@@ -19,7 +19,9 @@
             const ROID_SIZE = 100;// Starting  size of Asteroids in pixels
             const ROIDS_SPD = 50; // Max starting speed of asteriods in pixels per second
             const ROIDS_VERT = 10;// average number of vertices on each Asteriod
+            const SHIP_BLNK_DUR = 0.1; // duration of the ship's blink during invisability in seconds
             const SHIP_EXPLODE_DUR = 0.3; // duration of the ship's explosion
+            const SHIP_INV_DUR = 3; // Duration of the ships invincibility in seconds 
             const SHIP_SIZE = 30; // ship height in pixels
             const SHIP_THRUST = 5; //acceleration of the ship in pixels per second per second 
             const TURN_SPEED =360; //turn speed in degrees per second
@@ -30,20 +32,7 @@
             var canv = document.getElementById("gameCanvas");
             var ctx = canv.getContext("2d");
 
-            var ship ={
-                   x: canv.width/2,
-                   y: canv.height/2,
-                   r:  SHIP_SIZE /2,
-                   a: 90 / 180 * Math.PI, //convert to radians
-                   explodeTime: 0,
-                   rot: 0,
-                   thrusting: false,
-                   thrust:{
-                       x: 0,
-                       y: 0
-
-                   }
-                 }
+            var ship = newShip();
 
                  // set up asteriod
 
@@ -138,9 +127,28 @@
                  }
                  return roid;
               }
+
+        function newShip() {
+             return {
+                 x: canv.width / 2,
+                 y: canv.height / 2,
+                 r: SHIP_SIZE / 2,
+                 a: 90 / 180 * Math.PI, // convert to radians
+                 blinkNum: Math.ceil(SHIP_INV_DUR / SHIP_BLNK_DUR),
+                 blinkTime: Math.ceil(SHIP_BLNK_DUR * FPS),
+                 explodeTime: 0,
+                 rot: 0,
+                 thrusting: false,
+                 thrust: {
+                    x: 0,
+                    y: 0
+                 }
+            }
+        }
               // explode time
-            function update(){
-             var exploding =ship.explodeTime > 0;
+            function update() {
+             var blinkOn = ship.blinkNum % 2 == 0;
+             var exploding = ship.explodeTime > 0;
              
             
                 /*Draw Space*/
@@ -153,30 +161,31 @@
                 ship.thrust.y -= SHIP_THRUST * Math.sin(ship.a)/ FPS;
                 
                 // draw the thruster
-                ctx.fillStyle = "red";
-                ctx.strokeStyle= "yellow",
-                ctx.lengthWidth = SHIP_SIZE /100;
-                ctx.beginPath();
-                ctx.moveTo( //rear left
-                 ship.x - ship.r * (2/3 *  Math.cos(ship.a) + 0.5 * Math.sin(ship.a)),
-                 ship.y + ship.r * (2/3 * Math.sin(ship.a) - 0.5 * Math.cos(ship.a))
-            );
+             if (!exploding) {
+                  ctx.fillStyle = "red";
+                  ctx.strokeStyle= "yellow",
+                  ctx.lengthWidth = SHIP_SIZE /100;
+                  ctx.beginPath();
+                  ctx.moveTo( //rear left
+                  ship.x - ship.r * (2/3 *  Math.cos(ship.a) + 0.5 * Math.sin(ship.a)),
+                  ship.y + ship.r * (2/3 * Math.sin(ship.a) - 0.5 * Math.cos(ship.a))
+               );
 
-             ctx.lineTo( // rear center behind the ship
-             ship.x - ship.r * 6/3 * Math.cos(ship.a),
-             ship.y + ship.r * 6/3 * Math.sin(ship.a)
+                 ctx.lineTo( // rear center behind the ship
+                 ship.x - ship.r * 6/3 * Math.cos(ship.a),
+                 ship.y + ship.r * 6/3 * Math.sin(ship.a)
 
-             );
+               );
 
-              ctx.lineTo( // rear right
-             ship.x - ship.r * (2/3 * Math.cos(ship.a) - 0.5 * Math.sin(ship.a)),
-             ship.y + ship.r * (2/3 * Math.sin(ship.a) + 0.5 * Math.cos(ship.a))
+                ctx.lineTo( // rear right
+                ship.x - ship.r * (2/3 * Math.cos(ship.a) - 0.5 * Math.sin(ship.a)),
+                ship.y + ship.r * (2/3 * Math.sin(ship.a) + 0.5 * Math.cos(ship.a))
 
-             );
-             ctx.closePath();
-             ctx.fill();
-             ctx.stroke();
-
+               );
+               ctx.closePath();
+               ctx.fill();
+               ctx.stroke();
+             }
                 
             } else {
                  ship.thrust.x -= FRICTION * ship.thrust.x / FPS;
@@ -184,49 +193,59 @@
 
             }
 
-
-             /*Draw Ship*/
               // draw the triangular ship
             if (!exploding) {
-                    ctx.strokeStyle = "white";
-                    ctx.lineWidth = SHIP_SIZE / 20;
-                    ctx.beginPath();
-                    ctx.moveTo( // nose of the ship
+                if (blinkOn) {
+                     ctx.strokeStyle = "white";
+                     ctx.lineWidth = SHIP_SIZE / 20;
+                     ctx.beginPath();
+                     ctx.moveTo( // nose of the ship
                         ship.x + 4 / 3 * ship.r * Math.cos(ship.a),
                         ship.y - 4 / 3 * ship.r * Math.sin(ship.a)
-                    );
-                    ctx.lineTo( // rear left
+                     );
+                     ctx.lineTo( // rear left
                         ship.x - ship.r * (2 / 3 * Math.cos(ship.a) + Math.sin(ship.a)),
                         ship.y + ship.r * (2 / 3 * Math.sin(ship.a) - Math.cos(ship.a))
-                    );
-                    ctx.lineTo( // rear right
+                     );
+                     ctx.lineTo( // rear right
                         ship.x - ship.r * (2 / 3 * Math.cos(ship.a) - Math.sin(ship.a)),
                         ship.y + ship.r * (2 / 3 * Math.sin(ship.a) + Math.cos(ship.a))
-                    );
-                    ctx.closePath();
-                    ctx.stroke();
-                } else {
+                     );
+                     ctx.closePath();
+                     ctx.stroke();
+
+                }
+                // handel the blink
+                if (ship.blinkNum > 0){
+
+                 // reduce the blink time
+                  ship.blinkTime--;
+
+                  // reduce the blink num
+                  if (ship.blinkTime == 0){
+                      ship.blinkTime =Math.ceil(SHIP_BLNK_DUR * FPS)
+                      ship.blinkNum --;
+                  }
+                }
+
+            } else {
                     // draw the explosion
                      ctx.fillStyle ="darkred";
                      ctx.beginPath();
                      ctx.arc(ship.x, ship.y, ship.r * 1.7, 0, Math.PI * 2, false );
                      ctx.fill();
-
                      ctx.fillStyle ="red";
                      ctx.beginPath();
                      ctx.arc(ship.x, ship.y, ship.r * 1.4, 0, Math.PI * 2, false );
                      ctx.fill();
-
                      ctx.fillStyle ="orange";
                      ctx.beginPath();
                      ctx.arc(ship.x, ship.y, ship.r * 1.1, 0, Math.PI * 2, false );
                      ctx.fill();
-
                      ctx.fillStyle ="yellow";
                      ctx.beginPath();
                      ctx.arc(ship.x, ship.y, ship.r * 0.8, 0, Math.PI * 2, false );
                      ctx.fill();
-
                      ctx.fillStyle ="white";
                      ctx.beginPath();
                      ctx.arc(ship.x, ship.y, ship.r * 0.5, 0, Math.PI * 2, false );
@@ -293,19 +312,26 @@
             }
 
             // Check for asteriod collision
-             for (var i = 0; i < roids.length; i++) {
-                  if(distanceBetweenPoints(ship.x, ship.y, roids[i].x, roids[i].y)< ship.r + roids[i].r){
+            if (!exploding) {
+               for (var i = 0; i < roids.length; i++) {
+                   if(distanceBetweenPoints(ship.x, ship.y, roids[i].x, roids[i].y)< ship.r + roids[i].r){
                       explodeShip();
-
-                  }
-             }
-             /*rotate Ship*/
-            ship.a += ship.rot;
+                    }
+               }
+               /*rotate Ship*/
+               ship.a += ship.rot;
 
              /*move Ship*/
-             ship.x +=  ship.thrust.x;
-             ship.y +=  ship.thrust.y;
+               ship.x +=  ship.thrust.x;
+               ship.y +=  ship.thrust.y;
+            } else {
 
+                ship.exploadeTime--;
+                   
+                if (ship.exploadeTime == 0){
+                    ship =newShip();
+                }
+            }
              // handel edge of screen
 
              if (ship.x < 0 - ship.r ){
@@ -344,23 +370,6 @@
 
         </script>
     </body>
-
-
-
-
-
-
-
-
-   
-
-
-
-
-
-
-
-
 
 
 </html>
