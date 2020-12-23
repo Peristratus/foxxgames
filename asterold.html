@@ -14,6 +14,8 @@
 
             const FPS = 30; /*Frames per second*/
             const FRICTION = 0.7;// Frection coefficient of space (0 = no friction, 1= lots of friction)
+            const LASER_MAX = 10;// Maximum number of lasers on screen at once
+            const LASER_SPD = 500// Speed of Lsers in pixel per second
             const ROIDS_JAG =0.4; // Jaggedness of the asteroid (0== none, 1 =lots)
             const ROIDS_NUM = 10 ; // Starting number of asteriods(note)
             const ROID_SIZE = 100;// Starting  size of Asteroids in pixels
@@ -73,12 +75,15 @@
 
             function keyDown(/* @type {keyboardEvent}*/ ev){
             switch(ev.keyCode){
+               case 32: // space bar (shoot laser)
+                    shootLaser();
+                    break;
 
                case 37: // left arrow (rotate ship left)
                     ship.rot= TURN_SPEED/180 * Math.PI / FPS;
                     break;
 
-                case 38: // upo arrow (thrust ship forward)
+                case 38: // up arrow (thrust ship forward)
                      ship.thrusting =true;
                          
                       break;
@@ -93,15 +98,18 @@
 
             function keyUp(ev) {
                 switch(ev.keyCode){
-                case 37: // left arrow (stop rotataing left)
-                    ship.rot= 0;
-                    break;
+                  case 32: // space bar (allow shooting)
+                       ship.canShoot = true;
+                     break;
+                    case 37: // left arrow (stop rotataing left)
+                      ship.rot= 0;
+                      break;
 
-                case 38: // upo arrow ( Stop thrust )
-                     ship.thrusting =false;    
+                  case 38: // up arrow ( Stop thrust )
+                      ship.thrusting =false;    
                       break;
                 
-                 case 39: // Right arrow (stop rotate ship right)
+                   case 39: // Right arrow (stop rotate ship right)
                       ship.rot= 0;
                       break; 
 
@@ -136,7 +144,9 @@
                  a: 90 / 180 * Math.PI, // convert to radians
                  blinkNum: Math.ceil(SHIP_INV_DUR / SHIP_BLNK_DUR),
                  blinkTime: Math.ceil(SHIP_BLNK_DUR * FPS),
+                 canShoot: true,
                  explodeTime: 0,
+                 lasers:[],
                  rot: 0,
                  thrusting: false,
                  thrust: {
@@ -144,6 +154,23 @@
                     y: 0
                  }
             }
+        }
+
+        function shootLaser() {
+            // create the laser object
+            if (ship.canShoot && ship.lasers.length < LASER_MAX) {
+                ship.lasers.push({ // from the nose of the ship
+                    x: ship.x + 4 / 3 * ship.r * Math.cos(ship.a),
+                    y: ship.y - 4 / 3 * ship.r * Math.sin(ship.a),
+                    xv: LASER_SPD * Math.cos(ship.a) / FPS,
+                    yv: LASER_SPD * Math.sin(ship.a) / FPS,
+                    dist: 0,
+                    explodeTime: 0
+                });
+            }
+
+            // prevent further shooting
+            ship.canShoot = false;
         }
               // explode time
             function update() {
@@ -309,6 +336,15 @@
             if (SHOW_CENTER_DOT){
             ctx.fillStyle = "red",
             ctx. fillRect(ship.x -1, ship.y -1, 2, 2)
+            }
+
+            // draw the lasers
+            for (var i = 0; i < ship.lasers.lenght; i++){
+                ctx.fillStyle = "salmon";
+                ctx.beginPath();
+                ctx.arc(ship.lasers[i].x, ship.lasers[i].y, SHIP_SIZE / 15, 0, Math.PI * 2, false);
+                ctx.fill();
+
             }
 
             // Check for asteriod collision
