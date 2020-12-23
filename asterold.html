@@ -22,6 +22,8 @@
             const SHIP_SIZE = 30; // ship height in pixels
             const SHIP_THRUST = 5; //acceleration of the ship in pixels per second per second 
             const TURN_SPEED =360; //turn speed in degrees per second
+            const SHOW_BOUNDING= true; // show or hide collision bounding
+            const SHOW_CENTER_DOT= false;// show or hide center dot.
 
             /* @(HTMLCanvasElement*/
             var canv = document.getElementById("gameCanvas");
@@ -74,6 +76,15 @@
                 return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
             }
 
+             function explodeShip() {
+             ctx.fillStyle ="lime";
+             ctx.strokeStyle ="lime";
+             ctx.beginPath();
+             ctx.arc(ship.x, ship.y,ship.r,0, Math.PI * 2, false );
+             ctx.fill();
+             ctx.stroke();
+
+             }
 
             function keyDown(/* @type {keyboardEvent}*/ ev){
             switch(ev.keyCode){
@@ -198,12 +209,20 @@
              ctx.closePath();
              ctx.stroke();
 
+             if (SHOW_BOUNDING){
+               ctx.strokeStyle ="lime";
+               ctx.beginPath();
+               ctx.arc(ship.x, ship.y, ship.r,0, Math.PI * 2, false );
+               ctx.stroke();
+
+             }
+
              //draw the Asteriod
-             ctx.strokeStyle = "slategray";
-             ctx.lineWidth =SHIP_SIZE / 20;
+             
              var x,y,r, a, vert, offs;
              for (var i =0; i < roids.length; i++){
-
+                   ctx.strokeStyle = "slategray";
+                    ctx.lineWidth =SHIP_SIZE / 20;
              // get the asteroid properties
                 x = roids[i].x;
                 y = roids[i].y;
@@ -232,27 +251,29 @@
              ctx.closePath(); 
              ctx.stroke(); 
 
-              // move the asteroid
-                roids[i].x += roids[i].xv;
-                roids[i].y += roids[i].yv;
+             if (SHOW_BOUNDING){
+               ctx.strokeStyle ="lime";
+               ctx.beginPath();
+               ctx.arc(x, y,r,0, Math.PI * 2, false );
+               ctx.stroke();
 
-                // handle asteroid edge of screen
-                if (roids[i].x < 0 - roids[i].r) {
-                    roids[i].x = canv.width + roids[i].r;
-                } else if (roids[i].x > canv.width + roids[i].r) {
-                    roids[i].x = 0 - roids[i].r
-                }
-                if (roids[i].y < 0 - roids[i].r) {
-                    roids[i].y = canv.height + roids[i].r;
-                } else if (roids[i].y > canv.height + roids[i].r) {
-                    roids[i].y = 0 - roids[i].r
-                }
+               }
+     
             }
 
+            //center dot
+            if (SHOW_CENTER_DOT){
+            ctx.fillStyle = "red",
+            ctx. fillRect(ship.x -1, ship.y -1, 2, 2)
+            }
 
-            
+            // Check for asteriod collision
+             for (var i = 0; i < roids.length; i++) {
+                  if(distanceBetweenPoints(ship.x, ship.y, roids[i].x, roids[i].y)< ship.r + roids[i].r){
+                      explodeShip();
 
-
+                  }
+             }
              /*rotate Ship*/
             ship.a += ship.rot;
 
@@ -274,10 +295,25 @@
                      ship.y = 0 - ship.r;
 
              }
+            
+             // move the asteroid
+            for (var i = 0; i < roids.length; i++) {
+                roids[i].x += roids[i].xv;
+                roids[i].y += roids[i].yv;
 
-            //  center dot
-            //ctx.fillStyle = "red",
-            //ctx. fillRect(ship.x -1, ship.y -1, 2, 2)
+                // handle asteroid edge of screen
+                if (roids[i].x < 0 - roids[i].r) {
+                    roids[i].x = canv.width + roids[i].r;
+                } else if (roids[i].x > canv.width + roids[i].r) {
+                    roids[i].x = 0 - roids[i].r
+                }
+                if (roids[i].y < 0 - roids[i].r) {
+                    roids[i].y = canv.height + roids[i].r;
+                } else if (roids[i].y > canv.height + roids[i].r) {
+                    roids[i].y = 0 - roids[i].r
+                }
+            }
+            
 
             }
 
