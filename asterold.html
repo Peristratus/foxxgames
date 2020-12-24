@@ -31,6 +31,8 @@
             const TURN_SPEED =360; //turn speed in degrees per second
             const SHOW_BOUNDING= false; // show or hide collision bounding
             const SHOW_CENTER_DOT= false;// show or hide center dot.
+            const TEXT_FADE_TIME = 2.5; // text fade time in seconds
+            const TEXT_SIZE = 40; // text font height in pixels
             
 
             /* @(HTMLCanvasElement*/
@@ -38,7 +40,7 @@
             var ctx = canv.getContext("2d");
 
             // set up the game parameters
-            var level, roids, ship;
+            var level, roids, ship, text, textAlpha;
             newGame();
 
             // set up event handelers
@@ -166,6 +168,8 @@
               }
 
               function newLevel() {
+                  text = "Level" + (level + 1);
+                  textAlpha = 1.0;
                    createAsteroidsBelt();
 
               }
@@ -395,6 +399,15 @@
                     ctx.fill();
                 }
             }
+             // draw the game text
+             if (textAlpha >= 0) {
+                 ctx.textAlign ="center";
+                 ctx.textBaseline = "middle";
+                 ctx.fillStyle = "rgba(255, 255, 255, " + textAlpha + ")";
+                 ctx.font = "small-caps " + TEXT_SIZE + "px dejavu sans mono";
+                 ctx.fillText(text, canv.width / 2, canv.height * 0.75);
+                 textAlpha -= (1.0 / TEXT_FADE_TIME / FPS);
+             }
 
             // detect laser hits on asteroid
 
