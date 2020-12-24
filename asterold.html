@@ -124,11 +124,18 @@
 
              function gameOver(){
                 // To do game over
+                ship.dead = true;
+                text = "Game Over"
+                textAlpha = 1.0;
 
              }
 
             function keyDown(/* @type {keyboardEvent}*/ ev){
-               switch(ev.keyCode){
+                if (ship.dead){
+                    return;
+
+                }
+                switch(ev.keyCode){
                   case 32: // spacebar (shoot the laser)
                     shootLaser();
                     break;
@@ -147,7 +154,12 @@
             }
 
             function keyUp(ev) {
-               switch(ev.keyCode){
+               if (ship.dead){
+                    return;
+
+                }
+               
+                switch(ev.keyCode){
                  case 32: // spacebar (allow shoot)
                     ship.canShoot = true;
                     break;
@@ -210,6 +222,7 @@
                  blinkNum: Math.ceil(SHIP_INV_DUR / SHIP_BLNK_DUR),
                  blinkTime: Math.ceil(SHIP_BLNK_DUR * FPS),
                  canShoot: true,
+                 dead: false,
                  explodeTime: 0,
                  lasers:[],
                  rot: 0,
@@ -248,7 +261,7 @@
             ctx.fillRect(0, 0, canv.width, canv.height);
 
             // thrust the ship
-            if (ship.thrusting){
+            if (ship.thrusting && !ship.dead){
                 ship.thrust.x += SHIP_THRUST * Math.cos(ship.a) / FPS;
                 ship.thrust.y -= SHIP_THRUST * Math.sin(ship.a)/ FPS;
                 
@@ -287,7 +300,7 @@
 
               // draw the triangular ship
             if (!exploding) {
-                if (blinkOn) {
+                if (blinkOn && !ship.dead) {
                      drawShip(ship.x, ship.y, ship.a );
 
                 }
@@ -418,6 +431,8 @@
                  ctx.font = "small-caps " + TEXT_SIZE + "px dejavu sans mono";
                  ctx.fillText(text, canv.width / 2, canv.height * 0.75);
                  textAlpha -= (1.0 / TEXT_FADE_TIME / FPS);
+             } else if (ship.dead) {
+                newGame();
              }
 
 
@@ -460,7 +475,7 @@
 
             // Check for asteriod collision
             if (!exploding) {
-                if (ship.blinkNum == 0) {
+                if (ship.blinkNum == 0 && !ship.dead) {
                    for (var i = 0; i < roids.length; i++) {
                         if(distanceBetweenPoints(ship.x, ship.y, roids[i].x, roids[i].y) < ship.r + roids[i].r){
                          explodeShip();
