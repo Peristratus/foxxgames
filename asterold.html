@@ -19,7 +19,7 @@
             const LASER_MAX = 10;// Maximum number of lasers on screen at once
             const LASER_SPD = 500;// Speed of Lsers in pixel per second
             const ROIDS_JAG =0.4; // Jaggedness of the asteroid (0== none, 1 =lots)
-            const ROIDS_NUM = 10 ; // Starting number of asteriods(note)
+            const ROIDS_NUM = 1 ; // Starting number of asteriods(note)
             const ROID_SIZE = 100;// Starting  size of Asteroids in pixels
             const ROIDS_SPD = 50; // Max starting speed of asteriods in pixels per second
             const ROIDS_VERT = 10;// average number of vertices on each Asteriod
@@ -37,12 +37,9 @@
             var canv = document.getElementById("gameCanvas");
             var ctx = canv.getContext("2d");
 
-            var ship = newShip();
-
-                 // set up asteriod
-
-                 var roids = []
-                 createAsteroidsBelt();
+            // set up the game parameters
+            var level, roids, ship;
+            newGame();
 
             // set up event handelers
             document.addEventListener("keydown", keyDown);
@@ -56,7 +53,7 @@
             function createAsteroidsBelt() {
                 roids =[];
                 var x,y;
-                for (var i = 0; i < ROIDS_NUM; i++){
+                for (var i = 0; i < ROIDS_NUM + level; i++){
                      do {
                     x = Math.floor(Math.random()* canv.width);
                     y = Math.floor(Math.random()* canv.height);
@@ -83,6 +80,13 @@
 
                 // destroy the asteroids
                 roids.splice(index, 1)
+
+                // new level when no more asteroids
+
+                if (roids.length == 0){
+                    level++;
+                    newLevel();
+                }
 
             }
 
@@ -134,11 +138,12 @@
                 }
             }
               function newAsteroid(x,y,r){
+                 var lvlMult = 1 + 0.1 * level;
                  var roid ={
                    x: x,
                    y: y,
-                   xv: Math.random()*ROIDS_SPD /FPS * (Math.random() < 0.5 ? 1 : -1),
-                   yv: Math.random()*ROIDS_SPD /FPS * (Math.random() < 0.5 ? 1 : -1),
+                   xv: Math.random()*ROIDS_SPD * lvlMult  /FPS * (Math.random() < 0.5 ? 1 : -1),
+                   yv: Math.random()*ROIDS_SPD * lvlMult /FPS * (Math.random() < 0.5 ? 1 : -1),
                    r:r,
                    a:Math.random()*Math.PI *2, // In radians
                    vert: Math.floor(Math.random() * (ROIDS_VERT + 1)+ ROIDS_VERT /2),
@@ -151,6 +156,18 @@
                      roid.offs.push(Math.random() * ROIDS_JAG * 2 + 1 -  ROIDS_JAG);
                  }
                  return roid;
+              }
+
+              function newGame() {
+                 level = 0;
+                 ship = newShip();
+                 newLevel();
+
+              }
+
+              function newLevel() {
+                   createAsteroidsBelt();
+
               }
 
         function newShip() {
