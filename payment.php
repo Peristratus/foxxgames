@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
   <head>
        <meta charset="UTF-8">
        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -67,7 +68,7 @@
        </div>
 
     </main>
-    <script src=<script src="https://www.paypal.com/sdk/js?client-id=AWiHfkGAozfapAeK_p9EWZl6RWRnucJkRK_et_9uyOA61M2lJKh1TK-D3vurai4GbM4wk66BrfHrT_Wp"></script>></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AWiHfkGAozfapAeK_p9EWZl6RWRnucJkRK_et_9uyOA61M2lJKh1TK-D3vurai4GbM4wk66BrfHrT_Wp"></script>
     <script>paypal.Buttons().render('#paypal-payment-button');</script>
 
   </body>
