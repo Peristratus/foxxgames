@@ -7,7 +7,9 @@
        <title>foxxgames</title>
            <!---BootStrap-->
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-           
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <!-- Google Fonts -->
            <!-- Google Fonts -->
           <link href="https://fonts.googleapis.com/css2?family=Skranji:wght@700&display=swap" rel="stylesheet">
           <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,600&display=swap" rel="stylesheet">
@@ -17,10 +19,11 @@
 
          <!--Internal css--->
         <link rel="stylesheet" href="css/style.css" type="text/css">
+        <script type="text/javascript" src= "https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"> </script>
         <script type="text/javascript">
             (function(){
                  emailjs.init("user_USDkst22Qw68OOzBLi0W9");
-         })();
+            })();
         </script>  
     </head>
 
@@ -201,11 +204,85 @@
                                  <label for="" class="text-white">Comment</label>
                                  <textarea name="summary" id="exampletextsreacontrol" rows="5" class="form-control" placeholder="message"></textarea>
                             </div>
+                             <div class="col">
+                            <button type="submit" class="btn btn-secondary">Send Message</button>
+                        </div>
                         </div>
                     </form>
                  </div>
            </div>
         </div>
+
+    <!---- Footer------>
+        <footer class="container-fluid" >
+        
+        <div id="footer-details" class="row">
+           <div class="col-sm-4 ">
+             <h5 class="uppercase general-sub">About</h5>
+             <p class="inline-block"> Rewind back to the future with Foxxgames as we bring back the classic games from Atari, Nintendo & Sega.</p>
+          </div>
+
+            <div class="col-sm-4">
+              <h5 class="uppercase general-sub">Download</h5>
+              <p class="inline-block"> Sega Leap Frog Free download for Macbook ,Windows 2010 & Ipad Pro.
+              <a href="#" target="_blank" rel="noreferrer" class="cv-pdf">
+              <i class="fa fa-download" aria-hidden="true"></i>
+              <span class="sr-only">Download Link</span>
+              </a>
+              </p>
+            </div>
+              
+            <div class="col-sm-4">
+               <h5 class="uppercase general-sub">Social</h5>
+               <ul class="list-inline  social-links">
+                 <li class= "list-inline-item"> 
+                 <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" >
+                 <i class="fa fa-facebook" aria-hidden="true"></i>
+                 <span class="sr-only">Facebook</span> 
+                 </a>
+                 </li>
+
+                 <li class="list-inline-item"> 
+                    <a href="https://www.twitter.com/" target="_blank" rel="noreferrer">
+                    <i class="fa fa-twitter" alt="twiter img" aria-hidden="true"></i>
+                    <span class="sr-only">Twitter</span> 
+                    </a>
+                    </li>
+
+                 <li class= "list-inline-item"> 
+                    <a href="https://www.linkedin.com/login" target="_blank" rel="noreferrer">
+                     <i class="fa fa-linkedin" alt="linkedin img" aria-hidden="true"></i>
+                     <span class="sr-only">Linkedin</span> 
+                    </a>
+                  </li>
+
+                  <li class= "list-inline-item"> 
+                    <a href="https://www.pinterest.com/" target="_blank" rel="noreferrer">
+                     <i class="fa fa-pinterest" alt="pinterest img" aria-hidden="true"></i>
+                     <span class="sr-only">Pinterest</span> 
+                    </a>
+                  </li>
+
+                  <li class= "list-inline-item"> 
+                    <a href="https://www.instagram.com/accounts/login/" target="_blank" rel="noreferrer">
+                     <i class="fa fa-instagram" alt="instagram img" aria-hidden="true"></i>
+                     <span class="sr-only">Instagram </span> 
+                    </a>
+                  </li>
+
+                  <li class= "list-inline-item"> 
+                    <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">
+                     <i class="fa fa-youtube"  alt="Youtube img" aria-hidden="true"></i>
+                     <span class="sr-only">Youtube</span> 
+                    </a>
+                  </li>
+
+                </ul>
+           </div>
+        
+        </div>
+
+    </footer>
 
      </section>
 
@@ -215,13 +292,13 @@
          </p>
      </section>
 
+         
 
-
-
+      <script src="js/sendEmail.js"></script>
       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-      <script src="js/sendEmail.js"></script>
+      
     </body>
         
 </html>
