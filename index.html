@@ -177,24 +177,24 @@
            </div>
            <div class="row">
                  <div class ="col-m-12">
-                   <form action="" class="mt-4">
+                   <form onsubmit="return sendMail(this);" class="mt-4">
                         <div class="form-row">
                             <div class="col">
-                                <input type="text" class ="form-control" id="fc1" placeholder="First name">
+                                <input type="text" name="name" class ="form-control" id="fc1" placeholder="First name">
                              </div>
                              <div class="col">
-                                <input type="text" class ="form-control"  id="fc2" placeholder="Last name">
+                                <input type="text" name="name" class ="form-control"  id="fc2" placeholder="Last name">
                              </div>
                          </div>
                         <div class= "form row mt-3">
                             <div class= "col">
-                                 <input type= "text" class="form-control"  id ="form-cont" placeholder="Email">
+                                 <input type= "email" name ="emailaddress" class="form-control"  id ="form-cont" placeholder="Email">
                             </div>
                         </div>
                         <div class="form-row mt-3">
                              <div class= "col">
                                  <label for="" class="text-white">Comment</label>
-                                 <textarea name="" id="exampletextsreacontrol" rows="5" class="form-control" placeholder="message"></textarea>
+                                 <textarea name="summary" id="exampletextsreacontrol" rows="5" class="form-control" placeholder="message"></textarea>
                             </div>
                         </div>
                     </form>
