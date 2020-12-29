@@ -102,11 +102,19 @@ function spawnEnemies() {
 }
 let animationId
 function animate() {
-   animationId = requestAnimationFrame(animate)
-   ctx.clearRect(0, 0, canvas.width, canvas.height)
-   player.draw()
-   projectiles.forEach((projectile)=> {
-   projectile.update()
+ animationId = requestAnimationFrame(animate)
+ ctx.clearRect(0, 0, canvas.width, canvas.height)
+ player.draw()
+    projectiles.forEach((projectile, index)=> {
+     projectile.update()
+     
+     // remove from edge of screen
+      if (projectile.x + projectile.radius < 0 || projectile.x - projectile.radius > canvas.width ||
+         projectile.y + projectile.radius < 0 || projectile.y - projectile.radius> canvas.height) {
+         setTimeout(() => {
+              projectiles.splice(index, 1)
+            }, 0)
+       }
    })
    enemies.forEach((enemy, index) => {
      enemy.update()
