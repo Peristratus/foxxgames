@@ -1,8 +1,10 @@
-console.log(gsap)
 const canvas = document.querySelector('canvas');
 const ctx =canvas.getContext('2d')
+
 canvas.width = innerWidth
 canvas.height = innerHeight
+
+const scoreEl = document.querySelector('#scoreEl');
 
 //Draw the palyer
 class Player{
@@ -132,6 +134,7 @@ function spawnEnemies() {
 
 }
 let animationId
+let score = 0 
 function animate() {
  animationId = requestAnimationFrame(animate)
  ctx.fillStyle ='rgba(0,0,0,0.1)'
@@ -179,6 +182,11 @@ function animate() {
                      }))
               }
               if (enemy.radius - 10 > 5 ) {
+
+                // increase our score
+                 score += 100
+                 scoreEl.innerHTML = score
+
                   gsap.to(enemy,{
                   radius: enemy.radius - 10
 
@@ -188,6 +196,11 @@ function animate() {
                }, 0)
 
                 }else{
+
+                 // remove from screen altogether
+                  score += 250
+                  scoreEl.innerHTML = score
+
                  setTimeout(() => {
                  enemies.splice(index, 1)
                   projectiles.splice(projectileIndex, 1)
