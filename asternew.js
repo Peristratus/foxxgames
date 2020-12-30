@@ -4,7 +4,9 @@ const ctx =canvas.getContext('2d')
 canvas.width = innerWidth
 canvas.height = innerHeight
 
-const scoreEl = document.querySelector('#scoreEl');
+const scoreEl = document.querySelector('#scoreEl')
+const startGameBtn = document.querySelector('#startGameBtn');
+const modalEl = document.querySelector('#modalEl');
 
 //Draw the palyer
 class Player{
@@ -230,6 +232,10 @@ addEventListener('click', (event) =>
       5, 'white', velocity)
     )
 })
+startGameBtn.addEventListener('click', () => {
+    animate()
+    spawnEnemies()
+    modalEl.style.display = 'none'
 
-animate()
-spawnEnemies()
+})
+
