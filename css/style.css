@@ -10,6 +10,7 @@ background-color: rgba(0,0,0,0.938);
 
 }
 
+
 .navbar{
 
     background-color: transparent;
@@ -40,7 +41,8 @@ background-color: rgba(0,0,0,0.938);
 }
 
 .card, .list-group-item{
-    background-color: rgba(0,0,0,0.712)
+    background-color: rgba(0,0,0,0.712);
+    color: whitesmoke;
 }
 
 .parallax{
