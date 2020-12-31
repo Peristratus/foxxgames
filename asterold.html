@@ -50,6 +50,7 @@
             const Num_INPUTS = 2;
             const Num_HIDDEN = 5;
             const Num_OUTPUTS = 1;
+            const NUM_SAMPLES = 10000;
 
             /* @(HTMLCanvasElement*/
             var canv = document.getElementById("gameCanvas");
@@ -72,8 +73,27 @@
             // setup neural networks
             var nn;
             if (AUTOMATION_ON){
-                nn = new NeuralNetwork(Num_INPUTS, Num_HIDDEN, Num_OUTPUTS)
-                nn.train([0, 1], [1]);
+                nn = new NeuralNetwork(Num_INPUTS, Num_HIDDEN, Num_OUTPUTS);
+
+                // train the network 
+                for(let i = 0;  i < NUM_SAMPLES; i++){
+                    // Text XOR Gate Logic
+                    // 0 0 = 0
+                    // 0 1 = 1
+                    // 1 0 = 1
+                    // 1 1 = 0
+
+                  let input0 = Math.round(Math.random()); // 0 or 1
+                  let input1 = Math.round(Math.random()); // 0 or 1
+                  let output = input0 == input1 ? 0 : 1;
+                  nn.train([input0, input1],[output]);
+
+                }
+                // test output
+                console.log("0,0 = "+ nn.feedForward([0,0]).data);
+                console.log("0,1 = "+ nn.feedForward([0,1]).data);
+                console.log("1,0 = "+ nn.feedForward([1,0]).data);
+                console.log("1,1 = "+ nn.feedForward([1,1]).data);
 
             }
 
