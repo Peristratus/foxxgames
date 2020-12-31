@@ -34,13 +34,15 @@
             const SHIP_SIZE = 30; // ship height in pixels
             const SHIP_THRUST = 5; //acceleration of the ship in pixels per second per second 
             const TURN_SPEED =360; //turn speed in degrees per second
-            const SHOW_BOUNDING= false; // show or hide collision bounding
-            const SHOW_CENTER_DOT= false;// show or hide center dot.
-            const MUSIC_ON = true;// game sound
-            const SOUND_ON = true;// game sound
             const TEXT_FADE_TIME = 2.5; // text fade time in seconds
             const TEXT_SIZE = 40; // text font height in pixels
             
+            //developer flags
+            const AUTOMATION_ON = true;// neural network
+            const MUSIC_ON = true;// game sound
+            const SOUND_ON = true;// game sound
+            const SHOW_BOUNDING= false; // show or hide collision bounding
+            const SHOW_CENTER_DOT= false;// show or hide center dot.
 
             /* @(HTMLCanvasElement*/
             var canv = document.getElementById("gameCanvas");
@@ -59,6 +61,12 @@
             // set up the game parameters
             var level, lives, roids, score, scoreHigh, ship, text, textAlpha;
             newGame();
+
+            // setup neural networks
+            if (AUTOMATION_ON){
+                // TODO Neural networks
+
+            }
 
             // set up event handelers
             document.addEventListener("keydown", keyDown);
@@ -166,7 +174,7 @@
              }
 
             function keyDown(/* @type {keyboardEvent}*/ ev){
-                if (ship.dead){
+                if (ship.dead || AUTOMATION_ON){
                     return;
 
                 }
@@ -189,7 +197,7 @@
             }
 
             function keyUp(ev) {
-               if (ship.dead){
+               if (ship.dead || AUTOMATION_ON){
                     return;
 
                 }
@@ -362,6 +370,13 @@
             function update() {
              var blinkOn = ship.blinkNum % 2 == 0;
              var exploding = ship.explodeTime > 0;
+
+             // use neural network to  rotate the ship and shoot
+
+             if (AUTOMATION_ON){
+
+                
+             }
              
              //tick the music
              music.tick();
