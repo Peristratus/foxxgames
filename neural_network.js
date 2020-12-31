@@ -1,12 +1,16 @@
 "use strict";
 
-class NeuralNetworks{
+class NeuralNetwork{
   constructor(numInputs, numHidden, numOutputs){
      this._numInputs = numInputs;
      this._numHidden = numHidden;
      this._numOutputs = numOutputs;
-     this._weights0 = new Matrix(this._numInputs, this.numHidden);
-     this._weights1 = new Matrix(this._numHidden, this.numOutputs);
+     this._weights0 = new Matrix(this._numInputs, this._numHidden);
+     this._weights1 = new Matrix(this._numHidden, this._numOutputs);
+
+     // randomise the initial weights
+      this._weights0.randomWeights();
+      this._weights1.randomWeights();
     }
 
     get weights0(){
@@ -14,15 +18,15 @@ class NeuralNetworks{
     }
 
     set weights0(weights){
-        this.weights0 = weights;
+        this._weights0 = weights;
     }
 
-    get weights0(){
-        return this._weights0;
+    get weights1(){
+        return this._weights1;
     }
 
-    set weights0(weights){
-        this.weights0 = weights;
+    set weights1(weights){
+        this_.weights1 = weights;
     }
 }
 
