@@ -1,5 +1,31 @@
 "use strict";
 
+class NeuralNetworks{
+  constructor(numInputs, numHidden, numOutputs){
+     this._numInputs = numInputs;
+     this._numHidden = numHidden;
+     this._numOutputs = numOutputs;
+     this._weights0 = new Matrix(this._numInputs, this.numHidden);
+     this._weights1 = new Matrix(this._numHidden, this.numOutputs);
+    }
+
+    get weights0(){
+        return this._weights0;
+    }
+
+    set weights0(weights){
+        this.weights0 = weights;
+    }
+
+    get weights0(){
+        return this._weights0;
+    }
+
+    set weights0(weights){
+        this.weights0 = weights;
+    }
+}
+
 // MATRIX FUNCTION
 
 class Matrix {
@@ -130,7 +156,18 @@ class Matrix {
             }
               return m;
         }  
+       // find the transpose of the given matrix
 
+       static transpose(m0){
+          let m = new Matrix(m0.cols, m0.rows);
+            for (let i = 0; i < m0.rows; i ++){
+                for (let j = 0; j < m0.cols; j++) {
+                     m.data[j][i] = m0.data[i][j];
+                }
+       
+            }
+              return m;
+        }
 
       // apply randon weights betw -1 & 1
     randomWeights(){
