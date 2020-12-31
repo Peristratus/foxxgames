@@ -73,8 +73,7 @@
             var nn;
             if (AUTOMATION_ON){
                 nn = new NeuralNetwork(Num_INPUTS, Num_HIDDEN, Num_OUTPUTS)
-                console.table(nn.weights0.data);
-                console.table(nn.weights1.data);
+                nn.train([0, 1], [1]);
 
             }
 

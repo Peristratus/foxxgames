@@ -28,7 +28,47 @@ class NeuralNetwork{
     set weights1(weights){
         this_.weights1 = weights;
     }
+
+   feedForward(inputArray){
+      // convert input array to a matrix
+      let inputs = Matrix.convertFromArray(inputArray);
+
+      //find the hidden value and apply the activation function
+      let hidden = Matrix.dot(inputs, this.weights0);
+      hidden = Matrix.map(hidden, x => sigmoid(x));
+
+      // find the output value and apply the activation function
+      let outputs = Matrix.dot(hidden, this.weights1);
+      outputs = Matrix.map(outputs, x => sigmoid(x));
+
+      return outputs;
+
+      // apply bias???
+
+    }
+
+    train(inputArray, targetArray) {
+        // feed the input data through the network
+        let outputs =this.feedForward(inputArray);
+         console.log("outputs");
+         console.table(outputs.data);
+
+        // calculate the output errors (target-output)
+        let targets = Matrix.convertFromArray(targetArray);
+         console.log("targets");
+         console.table(targets.data);
+
+        let outputErrors = Matrix.subtract(targets, outputs);
+         console.log("outputErrors");
+         console.table(outputErrors.data);
+    }
 }
+
+function sigmoid(x){
+    return 1 / (1 + Math.exp(-x));
+}
+
+
 
 // MATRIX FUNCTION
 
