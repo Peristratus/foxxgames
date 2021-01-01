@@ -14,7 +14,7 @@
         <canvas id="gameCanvas" width="700" height="500"></canvas>
         <script>
 
-            const FPS = 30; /*Frames per second*/
+            const FPS = 60; /*Frames per second*/
             const FRICTION = 0.7;// Fraction coefficient of space (0 = no friction, 1= lots of friction)
             const GAME_LIVES = 3; // Starting Number of Lives
             const LASER_DIST = 0.5; // Max distance laser can travel as fraction of screen width
@@ -22,7 +22,7 @@
             const LASER_MAX = 10;// Maximum number of lasers on screen at once
             const LASER_SPD = 500;// Speed of Lsers in pixel per second
             const ROIDS_JAG =0.4; // Jaggedness of the asteroid (0== none, 1=lots)
-            const ROID_NUM = 1 ; // Starting number of asteriods(note)
+            const ROID_NUM = 3 ; // Starting number of asteriods(note)
             const ROID_SIZE = 100;// Starting  size of Asteroids in pixels
             const ROIDS_SPD = 50; // Max starting speed of asteriods in pixels per second
             const ROIDS_VERT = 10;// average number of vertices on each Asteriod
@@ -41,20 +41,20 @@
             
             //developer flags
             const AUTOMATION_ON = true;// neural network
-            const MUSIC_ON = false;// game sound
-            const SOUND_ON = false;// game sound
+            const MUSIC_ON = true;// game sound
+            const SOUND_ON = true;// game sound
             const SHOW_BOUNDING= false; // show or hide collision bounding
             const SHOW_CENTER_DOT= false;// show or hide center dot.
 
             // neural network parameters 
-            const Num_INPUTS = 3;
+            const Num_INPUTS = 4;
             const Num_HIDDEN = 20;
             const Num_OUTPUTS = 1;
             const NUM_SAMPLES = 500000; // number of training samples
             const OUTPUT_LEFT = 0; // expected neural output for turning left
             const OUTPUT_RIGHT = 1; // expected neural output for turning right
-            const OUTPUT_THRESHOLD = 0.25; // how close the prediction must be to commit to a turn.
-            const RATE_OF_FIRE = 5; // Shoots per second
+            const OUTPUT_THRESHOLD = 0.05; // how close the prediction must be to commit to a turn.
+            const RATE_OF_FIRE = 15; // Shoots per second
 
             /* @(HTMLCanvasElement*/
             var canv = document.getElementById("gameCanvas");
@@ -99,7 +99,7 @@
                     let direction = angle > Math.PI ? OUTPUT_LEFT : OUTPUT_RIGHT;
 
                     // train the network
-                    nn.train(normaliseInput(ax, ay, sa), [direction]);
+                    nn.train(normaliseInput(ax, ay, angle, sa), [direction]);
 
                 }
                 
@@ -332,12 +332,13 @@
             }
         }
 
-        function normaliseInput(roidX, roidY, shipA){
+        function normaliseInput(roidX, roidY, roidA, shipA){
             // normalise the value 
             let input = [];
             input[0] = (roidX + ROID_SIZE / 2) / (canv.width + ROID_SIZE);
             input[1] = (roidY + ROID_SIZE / 2) / (canv.height + ROID_SIZE);
-            input[2] = shipA / (Math.PI * 2);
+            input[2] = roidA / (Math.PI * 2);
+            input[3] = shipA / (Math.PI * 2);
             return input;
 
         }
@@ -434,13 +435,28 @@
              // use neural network to  rotate the ship and shoot
 
              if (AUTOMATION_ON){
+
+                // compute the closest Asteroid
+                let c = 0; // closest index
+                let dist0 = distanceBetweenPoints(ship.x, ship.y, roids[0].x, roids[0].y);
+                for (let i = 1; i < roids.length; i++){
+                    let dist1 = distanceBetweenPoints(ship.x, ship.y, roids[i].x, roids[i].y);
+                    if (dist1 < dist0) {
+                        dist0 = dist1;
+                        c = i;
+
+
+                    }
+                }
                 
                 // Make a prediction based on current data
-                let ax = roids[0].x;
-                let ay = roids[0].y;
+                let ax = roids[c].x;
+                let ay = roids[c].y;
                 let sa = ship.a;
-                let predict = nn.feedForward(normaliseInput(ax, ay, sa)).data[0][0];
-                console.log(ship.a);
+                let sx =ship.x;
+                let sy =ship.y;
+                let angle = angleToPoint(sx,sy,sa,ax,ay);
+                let predict = nn.feedForward(normaliseInput(ax, ay,  angle, sa)).data[0][0]
 
                 // make a turn
                 let dLeft = Math.abs(predict - OUTPUT_LEFT);
