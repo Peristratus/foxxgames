@@ -1,7 +1,7 @@
 "use strict";
 
 const LOG_ON = true; // whether or not to show error logging
-const LOG_FREQ = 10000; // how Often to show error logs (in iterations)
+const LOG_FREQ = 20000; // how Often to show error logs (in iterations)
 
 class NeuralNetwork{
   constructor(numInputs, numHidden, numOutputs){
