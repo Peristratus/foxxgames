@@ -40,7 +40,7 @@
             const TEXT_SIZE = 40; // text font height in pixels
             
             //developer flags
-            const AUTOMATION_ON = false;// neural network
+            const AUTOMATION_ON = true;// neural network
             const MUSIC_ON = false;// game sound
             const SOUND_ON = false;// game sound
             const SHOW_BOUNDING= false; // show or hide collision bounding
@@ -54,6 +54,7 @@
             const OUTPUT_LEFT = 0; // expected neural output for turning left
             const OUTPUT_RIGHT = 1; // expected neural output for turning right
             const OUTPUT_THRESHOLD = 0.25; // how close the prediction must be to commit to a turn.
+            const RATE_OF_FIRE = 5; // Shoots per second
 
             /* @(HTMLCanvasElement*/
             var canv = document.getElementById("gameCanvas");
@@ -74,7 +75,7 @@
             newGame();
 
             // setup neural networks
-            var nn;
+            var nn, aiShootTime = 0;
             if (AUTOMATION_ON){
                 nn = new NeuralNetwork(Num_INPUTS, Num_HIDDEN, Num_OUTPUTS);
 
@@ -433,8 +434,36 @@
              // use neural network to  rotate the ship and shoot
 
              if (AUTOMATION_ON){
-                // TODO Control Ship
+                
+                // Make a prediction based on current data
+                let ax = roids[0].x;
+                let ay = roids[0].y;
+                let sa = ship.a;
+                let predict = nn.feedForward(normaliseInput(ax, ay, sa)).data[0][0];
+                console.log(ship.a);
 
+                // make a turn
+                let dLeft = Math.abs(predict - OUTPUT_LEFT);
+                let dRight = Math.abs(predict - OUTPUT_RIGHT);
+                if (dLeft < OUTPUT_THRESHOLD) {
+                    rotateShip(false);
+
+                }else if (dRight < OUTPUT_THRESHOLD){
+                  rotateShip(true);
+
+                } else {
+
+                    ship.rot = 0;
+                }
+
+                // Shoot the laser
+                if (aiShootTime == 0) {
+                    aiShootTime = Math.ceil(FPS /RATE_OF_FIRE);
+                    ship.canShoot = true;
+                    shootLaser();
+                }else{
+                    aiShootTime--;
+                }
              }
              
              //tick the music
@@ -687,6 +716,13 @@
             }
                /*rotate Ship*/
                ship.a += ship.rot;
+
+               // keep the angle between 0 and 360 (two pi)
+               if (ship.a < 0){
+                   ship.a += (Math.PI * 2);
+               } else if (ship.a >= (Math.PI * 2)){
+                   ship.a -= (Math.PI * 2);
+               }
 
              /*move Ship*/
                ship.x +=  ship.thrust.x;
