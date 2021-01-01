@@ -35,12 +35,12 @@
             const SHIP_INV_DUR = 3; // Duration of the ships invincibility in seconds 
             const SHIP_SIZE = 30; // ship height in pixels
             const SHIP_THRUST = 5; //acceleration of the ship in pixels per second per second 
-            const TURN_SPEED =360; //turn speed in degrees per second
+            const SHIP_TURN_SPD =360; //turn speed in degrees per second
             const TEXT_FADE_TIME = 2.5; // text fade time in seconds
             const TEXT_SIZE = 40; // text font height in pixels
             
             //developer flags
-            const AUTOMATION_ON = true;// neural network
+            const AUTOMATION_ON = false;// neural network
             const MUSIC_ON = false;// game sound
             const SOUND_ON = false;// game sound
             const SHOW_BOUNDING= false; // show or hide collision bounding
@@ -48,11 +48,12 @@
 
             // neural network parameters 
             const Num_INPUTS = 3;
-            const Num_HIDDEN = 10;
+            const Num_HIDDEN = 20;
             const Num_OUTPUTS = 1;
-            const NUM_SAMPLES = 1000000; // number of training samples
+            const NUM_SAMPLES = 500000; // number of training samples
             const OUTPUT_LEFT = 0; // expected neural output for turning left
             const OUTPUT_RIGHT = 1; // expected neural output for turning right
+            const OUTPUT_THRESHOLD = 0.25; // how close the prediction must be to commit to a turn.
 
             /* @(HTMLCanvasElement*/
             var canv = document.getElementById("gameCanvas");
@@ -97,7 +98,7 @@
                     let direction = angle > Math.PI ? OUTPUT_LEFT : OUTPUT_RIGHT;
 
                     // train the network
-                    nn.train([ax, ay, sa], [direction]);
+                    nn.train(normaliseInput(ax, ay, sa), [direction]);
 
                 }
                 
@@ -225,13 +226,13 @@
                     shootLaser();
                     break;
                  case 37: // left arrow (rotate ship left)
-                    ship.rot= TURN_SPEED/180 * Math.PI / FPS;
+                      rotateShip(false);
                     break;
                  case 38: // up arrow (thrust ship forward)
                      ship.thrusting =true; 
                      break;
                  case 39: // Right arrow (rotate ship right)
-                      ship.rot= -TURN_SPEED/180 * Math.PI / FPS;
+                      rotateShip(true);
                       break; 
                    
                 }
@@ -331,8 +332,19 @@
         }
 
         function normaliseInput(roidX, roidY, shipA){
+            // normalise the value 
+            let input = [];
+            input[0] = (roidX + ROID_SIZE / 2) / (canv.width + ROID_SIZE);
+            input[1] = (roidY + ROID_SIZE / 2) / (canv.height + ROID_SIZE);
+            input[2] = shipA / (Math.PI * 2);
+            return input;
 
-            
+        }
+
+        function rotateShip(right) {
+          let sign = right ? -1 : 1;
+          ship.rot = SHIP_TURN_SPD / 180 * Math.PI /FPS * sign;
+
         }
 
         function shootLaser() {
