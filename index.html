@@ -39,12 +39,12 @@
                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav mr-auto"></div>
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="#">Atari</a>
-                        <a class="nav-item nav-link" href="#">Nintendo</a>
-                        <a class="nav-item nav-link" href="#">Sega</a>
-                        <a class="nav-item nav-link" href="#">Games</a>
-                        <a class="nav-item nav-link" href="#">Contact Us</a>
+                        <a class="nav-item nav-link active" href="#carouselExampleFade">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="#cardTop">Atari</a>
+                        <a class="nav-item nav-link" href="#cardTop">Nintendo</a>
+                        <a class="nav-item nav-link" href="#cardTop">Sega</a>
+                        <a class="nav-item nav-link" href="#cardBottom">Games</a>
+                        <a class="nav-item nav-link" href="#contactForm">Contact Us</a>
                    </div>
                </div>
            </nav>
@@ -80,7 +80,7 @@
         </div>
        <!-----Card Top section---------->
 
-       <section class= "section-1">
+       <section class= "section-1" id="cardTop">
           <div class = "container">
                 <div class="row">
                         <div class ="col-md-4"> 
@@ -122,7 +122,7 @@
 
                     </div>   
                     <!-----Card Bottom section---------->  
-                        <div class="row my-4"> 
+                        <div class="row my-4" id ="cardBottom"> 
                             <div class="col-md-1 offset-md-4">
                                <div class="card" style="width: 18rem;">
                                         <img src="../img/ast640.png" class="card-img-top" alt="card image">
@@ -174,7 +174,7 @@
 
        </section>
        <!-----Contact Form------>
-     <section class = "sectio-3 m-4">
+     <section class = "sectio-3 m-4" id="contactForm">
 
         <div class="container">
            <div class ="row mt-4">
@@ -298,6 +298,11 @@
       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+       
+      <!----Smooth scroll--->
+     <script scr="smooth-scrooll.js"></script>
+     <script> var scroll = new SmoothScroll('a[href*="#"]');
+     </script>
       
     </body>
         
