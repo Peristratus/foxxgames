@@ -16,11 +16,11 @@ return actions.order.create({
 onApprove: function (data,actions){
 return actions.order.capture().then(function (details){
      console.log(details)
-     windows.location.replace('https//github.com/peristratus/foxxgames/blob/master/success.html')
+     window.location.href ='success.html'
   })
 
 },
 onCancel:function(data){
-    windows.location.replace('https//github.com/peristratus/foxxgames/blob/master/cancel.html')
+    window.location.href = 'cancel.html'
 }
 }).render('#paypal-payment-button');
