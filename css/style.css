@@ -13,7 +13,14 @@ background-color: rgba(0,0,0,0.938);
 .card-text{
  
     text-align: justify;
+    text-justify: inter-character;
 
+}
+
+.paypalbtn{
+
+    width: 200px;
+    height: 95px;
 }
 
 .navbar{
