@@ -17,6 +17,7 @@ background-color: rgba(0,0,0,0.938);
 
 }
 
+
 .img-thumbnail {
     padding: .25rem;
     background-color: #DAA520;
@@ -34,6 +35,11 @@ img {
 #upgames{
 
     font-family: 'Yellowtail', sans-serif;
+}
+
+#upgames{
+
+    font-family: 'Poppins', sans-serif;
 }
 
 .paypalbtn{
@@ -111,7 +117,8 @@ button[type="submit"] {
   margin-bottom: 20px;
   margin-left: 480px;
   color: #fafafa;
-  background-color: #e84610;
+  background-color: #DAA520;
+  font-family: 'Poppins'sans-serif;
 
 }
 
@@ -140,7 +147,7 @@ transition: all 0.35s ease-in-out;
 
 .cv-pdf i:hover{
 
-    color:#e84610;
+    color:#DAA520;
 }
 
 .social-links{
@@ -166,7 +173,7 @@ transition: all 0.35s ease-in-out;
  }
 .social-links li a i:hover{
 
-background:#e84610;
+background:#DAA520;
 
 }
 
