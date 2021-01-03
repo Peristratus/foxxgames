@@ -17,6 +17,20 @@ background-color: rgba(0,0,0,0.938);
 
 }
 
+.img-thumbnail {
+    padding: .25rem;
+    background-color: #DAA520;
+    border: 15px solid #DAA520;
+    border-radius: .25rem;
+    max-width: 100%;
+    height: auto;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
 .paypalbtn{
 
     width: 200px;
