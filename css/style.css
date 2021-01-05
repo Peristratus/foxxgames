@@ -76,6 +76,7 @@ img {
 .site-wrapper{
 
     height: 780px;
+    width: 100%;
 }
 
 .card, .list-group-item{
@@ -90,13 +91,14 @@ img {
     background-position: center;
     background-repeat: no-repeat;
     height: 900px;
+    width: 100%;
 }
  #fc1{
     width: 542px;
 }
 
 #fc2{
-    width: 542px;
+    width: 560px;
 }
 
 
@@ -114,9 +116,11 @@ width: 1117px;
 /* send*/
 
 button[type="submit"] {
+  display: block;
   margin-top: 15px;
   margin-bottom: 20px;
-  margin-left: 480px;
+  margin-right: auto;
+  margin-left: auto; 
   color: #fafafa;
   background-color: #DAA520;
   font-family: 'Poppins'sans-serif;
