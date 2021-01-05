@@ -17,14 +17,17 @@
 ------------------------
  ## Description
 
- This mini project is part of my on going Full Stack Software Developer course at Canadian Business college in collaboration with the Code Instititute.
- The website is based on a fictional resume website for Rosie Odenkirk, this project is supposed to showcase my skills in HTML,CSS, JavaScript , Jquery 
- other features include the intigation of google maps, GitHub and EMAILjs API into the webdesign. I also have a landing page with some additional design & features 
- to lure more users to the website and keep them entertained while exploring the landing page, there are pictures of the HTML, CSS and jS icons , when the mouse hovers
- over these images at the bottom of the page, they float up, once any of the images are clicked by the user the image on the right will change and this event will
- trigger a change in the landing page color. Additional features are once the page is loaded this trigger some audio music to play in the background, once 
- the user navigates through the nav link the music stops, if the user remains on the landing page the music continues playing for 2mins. The music type selected 
- is part of Rosie's elevator statement.
+ This milestone project is part of my on going Full Stack Software Developer course at Canadian Business college in collaboration with the Code Instititute.
+ The website is based on a fictional FOXX GAMES website, the website theme is based on vintage Atari, Nintendo and Sega games.The user will be able to 
+ scroll through the web page, buy games and play two games, the classic 1979 Asteroid game and the 2020 Asteriod game.I went through two tutorials and 
+ implemented the code, the results was two fully functional games, I also took a tutorial on Neural networks for the 1979 Asteriod game and managed to 
+ build a Neural network that enabled my computer to learn how to play the game, this resulted in an Artifical inteligent software that became better 
+ over time as I allowed the computer to practice playing the game the system became better, the first score was 80,789 level 15 utilizing all 3 lives, 
+ the second attempt was 97,980 level 17 utilizing all 3 lives, I now have a good understanding of neural networks and the math associated with neural
+ networks, i intend to continue improving on my skills by taking a course with intellipat on machine learning and eventually become certified by IBM 
+ for Machine learning and Artifical Intelligence, this project is supposed to showcase my skills in HTML, CSS, JavaScript & Jquery. Other features 
+ include the intigationPay Pal and EMAILjs API into the webdesign, the website also features parallax effect and carousel slide.The development of this
+ website is purely for educational purposes and not intended for commercial use.
  
 ----------------------------
  ## User-stories
