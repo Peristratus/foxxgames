@@ -26,7 +26,7 @@
  97,980 level 17 utilizing all 3 lives, I now have a good understanding of neural networks and the math associated with neural networks, i intend to 
  continue improving on my skills by taking a course with intellipat on machine learning and eventually become certified by IBM for Machine learning and 
  Artifical Intelligence, this project is supposed to showcase my skills in HTML, CSS, JavaScript & Jquery. Other features include the intigation of Pay 
- Pal and EMAILjs API into the webdesign, the website also features parallax effect and carousel slide.The development of this website is purely for 
+ Pal and emailjs API into the webdesign, the website also features parallax effect and carousel slide.The development of this website is purely for 
  educational purposes and not intended for commercial use.
  
 ----------------------------
