@@ -17,7 +17,7 @@
 ------------------------
  ## Description
 
- <div style="text-align: right">This milestone project is part of my on going Full Stack Software Developer course at Canadian Business college in collaboration with the Code Instititute.
+ This milestone project is part of my on going Full Stack Software Developer course at Canadian Business college in collaboration with the Code Instititute.
  The website is based on a fictional FOXX GAMES website, the website theme is based on vintage Atari, Nintendo and Sega games.The user will be able to 
  scroll through the web page, buy games and play two games, the classic 1979 Asteroid game and the 2020 Asteriod game.I went through two tutorials and 
  implemented the code, the results was two fully functional games, I also took a tutorial on Neural networks for the 1979 Asteriod game and managed to 
@@ -27,7 +27,7 @@
  continue improving on my skills by taking a course with intellipat on machine learning and eventually become certified by IBM for Machine learning and 
  Artifical Intelligence, this project is supposed to showcase my skills in HTML, CSS, JavaScript & Jquery. Other features include the intigation of Pay 
  Pal and EMAILjs API into the webdesign, the website also features parallax effect and carousel slide.The development of this website is purely for 
- educational purposes and not intended for commercial use.</div>
+ educational purposes and not intended for commercial use.
  
 ----------------------------
  ## User-stories
