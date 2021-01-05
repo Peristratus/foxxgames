@@ -107,6 +107,10 @@ let projectiles = []
 let enemies = []
 let particles = []
 
+//play music 
+var myAudio = document.createElement("audio");
+myAudio.src = "../sound/inm.mp3" , "../sound/inm.mp3";
+
 // restart game
 function init() {
   player = new Player (x, y, 10, 'white')
@@ -182,6 +186,7 @@ function animate() {
           cancelAnimationFrame(animationId)
           modalEl.style.display = 'flex'
           bigScoreEl.innerHTML = score
+          myAudio.pause();
       }
 
        projectiles.forEach((projectile, projectileIndex) => {
@@ -252,6 +257,7 @@ startGameBtn.addEventListener('click', () => {
     animate()
     spawnEnemies()
     modalEl.style.display = 'none'
+     myAudio.play();
 
 })
 
