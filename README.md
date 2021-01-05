@@ -22,12 +22,12 @@
  scroll through the web page, buy games and play two games, the classic 1979 Asteroid game and the 2020 Asteriod game.I went through two tutorials and 
  implemented the code, the results was two fully functional games, I also took a tutorial on Neural networks for the 1979 Asteriod game and managed to 
  build a Neural network that enabled my computer to learn how to play the game, this resulted in an Artifical inteligent software that became better 
- over time as I allowed the computer to practice playing the game the system became better, the first score was 80,789 level 15 utilizing all 3 lives, 
- the second attempt was 97,980 level 17 utilizing all 3 lives, I now have a good understanding of neural networks and the math associated with neural
- networks, i intend to continue improving on my skills by taking a course with intellipat on machine learning and eventually become certified by IBM 
- for Machine learning and Artifical Intelligence, this project is supposed to showcase my skills in HTML, CSS, JavaScript & Jquery. Other features 
- include the intigationPay Pal and EMAILjs API into the webdesign, the website also features parallax effect and carousel slide.The development of this
- website is purely for educational purposes and not intended for commercial use.
+ over time as I allowed the computer to practice playing the game, the first score was 80,789 level 15 utilizing all 3 lives, the second attempt was 
+ 97,980 level 17 utilizing all 3 lives, I now have a good understanding of neural networks and the math associated with neural networks, i intend to 
+ continue improving on my skills by taking a course with intellipat on machine learning and eventually become certified by IBM for Machine learning and 
+ Artifical Intelligence, this project is supposed to showcase my skills in HTML, CSS, JavaScript & Jquery. Other features include the intigation of Pay 
+ Pal and EMAILjs API into the webdesign, the website also features parallax effect and carousel slide.The development of this website is purely for 
+ educational purposes and not intended for commercial use.
  
 ----------------------------
  ## User-stories
