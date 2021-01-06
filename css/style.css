@@ -93,28 +93,7 @@ img {
     height: 900px;
     width: 100%;
 }
- #fc1, #fc2{
-    width: 542px;
-}
 
-#fc2{
-    width: 560px;
-    margin-left: 10px;
-}
-
-
-
-/* watch out for this code*/
-.form-control{
-width: 100%;
-
-}
-
-
-#exampletextsreacontrol{
-width: 100%;
-
-}
 
 /*Contact Form*/
 
@@ -176,8 +155,6 @@ label input:valid + .text-input {
   -webkit-transform: translateY(-74px);
   transform: translateY(-74px);
 }
-
-
 
 /* footer*/
 
@@ -243,7 +220,7 @@ padding: 20px;
 @media only screen and (max-device-width:414px){
 .site-wrapper{
 
-    height: 200px;
+    height: 230px;
 }
 
 .col-md-4{
@@ -255,51 +232,13 @@ padding: 20px;
         display: none;
     }
 
-    #fc1{
-           width: 250px;
-            
-        }    
-
-        #fc2{
-           width: 250px;
-           margin-top: 18px;
-            
-        }    
-
-        .bfont{
-
-            font-size: 0.7em;
-			font-style: italic;
-        }
-
     .form-control{
         width: 250px;
-
-       }   
-       #exampletextsreacontrol{
-           width: 250px;
-
-            }
-
-     button[type="submit"] {
-      margin-left: 0px;
-
-     }
-
-     .card-img-top, .col-md-4{
-       margin-top: 55px ;
-
-     }
-
+    }
+      
         .card {
          margin: auto;
          width: 60%;
-        }
-
-        .row{
-       margin-left:auto;
-       margin-right:auto;
-
         }
     
 }
@@ -320,34 +259,8 @@ padding: 20px;
         display: none;
     }
 
-    #fc1{
-           width: 250px;
-            
-        }    
-
-        #fc2{
-           width: 250px;
-           margin-top: 18px;
-            
-        }    
-
-        .bfont{
-
-            font-size: 0.7em;
-			font-style: italic;
-        }
-
     .form-control{
         width: 250px;
-
-       }   
-       #exampletextsreacontrol{
-           width: 250px;
-
-            }
-
-     button[type="submit"] {
-      margin-left: 0px;
 
      }
     
@@ -369,31 +282,11 @@ padding: 20px;
         display: none;
     }
 
-    #fc1{
-           width: 250px;
-            
-        }    
-
-        #fc2{
-           width: 250px;
-           margin-top: 18px;
-            
-        }    
-
-        .bfont{
-
-            font-size: 0.7em;
-			font-style: italic;
-        }
-
     .form-control{
         width: 250px;
 
        }   
-       #exampletextsreacontrol{
-           width: 250px;
-
-            }
+       
     
 }
   
