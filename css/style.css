@@ -240,6 +240,11 @@ padding: 20px;
          margin: auto;
          width: 60%;
         }
+
+    button[type="submit"]{
+        margin-left: 92px;
+
+       }
     
 }
 
@@ -283,7 +288,36 @@ padding: 20px;
     }
 
     .form-control{
-        width: 250px;
+        width: 220px;
+
+       }   
+
+       button[type="submit"]{
+        margin-left: 80px;
+
+       }
+       
+    
+}
+
+@media only screen and (max-device-width:280px){
+.site-wrapper{
+
+    height: 200px;
+}
+
+.col-md-4{
+
+    margin: 5% 0%;
+
+    }
+    .carousel-control-next, .carousel-control-prev{
+
+        display: none;
+    }
+
+    .form-control{
+        width: 180px;
 
        }   
        
