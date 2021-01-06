@@ -1,4 +1,4 @@
-paypal.Button({
+paypal.Buttons({
 style:{
     color:'blue',
     shape: 'pill'
