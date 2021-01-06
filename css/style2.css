@@ -36,7 +36,7 @@ padding: 10px;
     color: rgb(247, 245, 199);
     font-family: 'VT323', monospace;
     font-size: 20px;
-    margin-top: 700px;
+    margin-top: 900px;
     margin-right: 205px;
     padding: 2px;
     text-align: center;
@@ -46,3 +46,52 @@ padding: 10px;
     border-color: rgb(247, 245, 199);
     cursor: pointer;
 }
+
+/*@media screen and (min-width: 300px) and (min-height: 300px) {
+    #gameCanvas #back {
+    height: 300px;
+    width: 300px;
+    }
+}
+@media screen and (min-width: 400px) and (min-height: 400px) {
+    #gameCanvas #back  {
+    height: 400px;
+    width: 400px;
+    }
+}
+@media screen and (min-width: 500px) and (min-height: 500px) {
+    #gameCanvas #back  {
+    height: 500px;
+    width: 500px;
+    }
+}
+@media screen and (min-width: 600px) and (min-height: 600px) {
+    #gameCanvas #back {
+    height: 600px;
+    width: 600px;
+    }
+}
+@media screen and (min-width: 700px) and (min-height: 700px) {
+    #gameCanvas #back {
+    height: 700px;
+    width: 700px;
+    }
+}
+@media screen and (min-width: 800px) and (min-height: 800px) {
+    #gameCanvas #back  {
+    height: 800px;
+    width: 800px;
+    }
+}
+@media screen and (min-width: 900px) and (min-height: 900px) {
+    #gameCanvas #back  {
+    height: 900px;
+    width: 900px;
+    }
+}
+@media screen and (min-width: 1000px) and (min-height: 1000px) {
+    #gameCanvas #back  {
+    height: 1000px;
+    width: 1000px;
+    }
+} */
