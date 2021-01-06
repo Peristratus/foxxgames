@@ -4,11 +4,6 @@ padding: 0%;
 background-color: rgba(0,0,0,0.938);
 
 }
-.bfont{
-    font-size: 1.4em;
-	font-style: italic;
-
-}
 
 .card-text{
  
@@ -67,6 +62,7 @@ img {
     top: 0%;
     z-index: 0;
 } 
+
 .carousel-control-prev, .carousel-control-next {
 
     width: 8%;
@@ -216,11 +212,42 @@ padding: 20px;
 
 }
 
+@media only screen and (max-device-width:730px){
+#sitew{
+
+    height: 380px;
+}
+
+.col-md-4{
+    margin: 5% 0%;
+
+    }
+    .carousel-control-next, .carousel-control-prev{
+
+        display: none;
+    }
+
+    .form-control{
+        width: 250px;
+    }
+      
+        .card {
+         margin: auto;
+         width: 60%;
+        }
+
+    button[type="submit"]{
+        margin-left: 92px;
+
+       }
+    
+}
+
 
 @media only screen and (max-device-width:414px){
 .site-wrapper{
 
-    height: 230px;
+     height: 230px!important;
 }
 
 .col-md-4{
@@ -251,7 +278,7 @@ padding: 20px;
 @media only screen and (max-device-width:375px){
 .site-wrapper{
 
-    height: 200px;
+    height: 200px!important;
 }
 
 .col-md-4{
@@ -274,7 +301,7 @@ padding: 20px;
 @media only screen and (max-device-width:320px){
 .site-wrapper{
 
-    height: 200px;
+    height: 200px!important;
 }
 
 .col-md-4{
@@ -303,7 +330,7 @@ padding: 20px;
 @media only screen and (max-device-width:280px){
 .site-wrapper{
 
-    height: 200px;
+    height: 170px!important;
 }
 
 .col-md-4{
