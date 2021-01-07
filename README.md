@@ -158,7 +158,7 @@ All icons,logos and videos used on my website are only for educational purposes 
 2. Hero images random from [google](https://www.google.com/) search engine.
 3. Footer icons [fontawesome](https://fontawesome.com/v4.7.0/icons/)
 4. Music for 2020 Asteriod game from Youtube [MP3music](https://www.youtube.com/watch?v=mGx_FATyasQ)
-5. Music and sounds for 1979 Asteriod game from [Freecode-camp](https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ )
+5. Music and sounds for 1979 Asteriod game from [Freecode-camp](https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ)
 
 -----------------------------------------------
 
