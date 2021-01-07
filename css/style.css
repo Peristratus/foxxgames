@@ -93,7 +93,7 @@ img {
 
 /*Contact Form*/
 
-button[type="submit"] {
+button[type="submit"], #resetBtn {
   display: block;
   margin-top: 15px;
   margin-bottom: 20px;
@@ -101,6 +101,21 @@ button[type="submit"] {
   margin-left: auto; 
   padding-left: 5%;
   padding-right: 5%;
+  color: #fafafa;
+  background-color: #DAA520;
+  font-family: 'Poppins'sans-serif;
+
+}
+
+#resetBtn{
+
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto; 
+  padding-left: 2%;
+  padding-right: 2%;
   color: #fafafa;
   background-color: #DAA520;
   font-family: 'Poppins'sans-serif;
@@ -272,6 +287,13 @@ padding: 20px;
         margin-left: 92px;
 
        }
+
+    #resetBtn{
+
+        margin-right: 98px;
+    }
+
+
     
 }
 
@@ -295,6 +317,11 @@ padding: 20px;
         width: 250px;
 
      }
+
+     #resetBtn{
+
+        margin-left: 80px;
+    }
     
 }
 
@@ -323,6 +350,11 @@ padding: 20px;
         margin-left: 80px;
 
        }
+
+       #resetBtn{
+        margin-left: 65px;
+
+    }
        
     
 }
@@ -347,6 +379,18 @@ padding: 20px;
         width: 180px;
 
        }   
+
+       button[type="submit"]{
+        margin-right: auto;
+        margin-left: auto;
+
+       }
+
+       #resetBtn{
+        margin-right: auto;
+        margin-left: auto;
+
+    }
        
     
 }
