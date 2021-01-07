@@ -13,7 +13,7 @@ padding: 10px;
     height: 1000px; 
 }
 
-#container #gameCanvas{
+#container #gameCanvas {
 
     position: absolute;
     outline: 2px solid black;
