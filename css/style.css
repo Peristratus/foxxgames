@@ -227,10 +227,11 @@ padding: 20px;
 
 }
 
-@media only screen and (max-device-width:730px){
-#sitew{
+@media only screen and (max-device-width:768px){
+.site-wrapper{
 
-    height: 380px;
+    height: 425px!important;
+    width: 100%;
 }
 
 .col-md-4{
