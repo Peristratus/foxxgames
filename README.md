@@ -119,7 +119,8 @@ Technologies deployed on this project:
  11. Bootstrap cnd font awesome [Bootstrap](https://www.bootstrapcdn.com/fontawesome/)
  12. For CSS plugin [Trailwind](https://tailwindcss.com/)
  13. Font Google Poppins & Yellow tail  [Fontgoogle](https://fonts.google.com/)
- 14. Tutorial[Neural-Networks](https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ)
+ 14. Tutorial on [Neural-Networks](https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ)
+ 15. Scroll effect on index.html [Smooth-scroll](http://github.com/cferdinandi/smooth-scroll )
   
 
 ---------------------------------------------
@@ -141,8 +142,8 @@ Technologies deployed on this project:
 I would like to make references to cetain educational Youtube tutorials and certain articles that have helped with my webdesign develop my skills as a Fullstack developer.
 
 
-1. Online tutorials youtube video on responsive landing pages & websites.[Onlinetutorial](https://www.youtube.com/channel/UCbwXnUipZsLfUckBPsC7Jog )
-2. Dev Ed Youtube tutorials on responsive web design and login forms [DevED](https://www.youtube.com/channel/UClb90NQQcskPUGDIXsQEz5Q)
+1. Online tutorials youtube video on 1979 Asteroid game & Neural Networks [Freecode-camp](https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ )
+2. Online tutorials youtube video on new Asteroid game [Chris-course](https://www.youtube.com/channel/UC9Yp2yz6-pwhQuPlIDV_mjA)
 3. HTML/CSS security by sqreen online article [sqreen](https://www.sqreen.com/checklists/html-css-security-checklist)
 4. Input patterns online article [HTML.com](https://html.com/attributes/input-pattern/)
 5. W3 schools tutorials on Modal forms, HTML patterns and querry for HTML forms.
@@ -153,11 +154,11 @@ I would like to make references to cetain educational Youtube tutorials and cert
 
 All icons,logos and videos used on my website are only for educational purposes and will not be used for the commercial version:
 
-1. Social medial landing page icons free version from [icon8](https://icons8.com/icons/set/youtube-icon)
-2. HTML5, CSS, JS and Python Icons, mobile first image free random images from [google](https://www.google.com/) search engine.
-3. Hero image from [codeinstitute](https://icons8.com/icons/set/youtube-icon)
-4. Footer icons [fontawesome](https://fontawesome.com/v4.7.0/icons/)
-5. Music from Youtube [MP3music](https://www.youtube.com/watch?v=lta5go9P-go)
+1. Atari, Nintendo, Sega games random images from [google](https://www.google.com/) search engine.
+2. Hero images random from [google](https://www.google.com/) search engine.
+3. Footer icons [fontawesome](https://fontawesome.com/v4.7.0/icons/)
+4. Music for 2020 Asteriod game from Youtube [MP3music](https://www.youtube.com/watch?v=mGx_FATyasQ)
+5. Music and sounds for 1979 Asteriod game from [Freecode-camp](https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ )
 
 -----------------------------------------------
 
