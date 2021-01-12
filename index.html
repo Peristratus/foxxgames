@@ -243,6 +243,35 @@
                           </div>
                           <!--end modal btn-->
 
+
+                          <!-- Modal -->
+                          <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                   <h5 class="modal-title" id="exampleModalLabel">Write to us </h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                       <span aria-hidden="true">&times;</span>
+                                       </button>
+                                </div>
+                                     <div class="modal-body">
+                                          <form onsubmit="return sendMail(this);" id="myform">
+                                                    <i class="fas fa-user prefix grey-text"></i>
+                                                    <input type="text" name ="name" id ="fullname" class="form-control mb-4" placeholder ="Name" required/>
+                                                    <i class="fas fa-envelope prefix grey-text"></i>
+                                                    <input type="email" name ="emailaddress" id ="emailaddress" class="form-control mb-4" placeholder ="Email" required/>
+                                                    <i class="fas fa-comment-alt"></i>
+                                                    <textarea  row="20" name="projectsummary" id="summary" class="form-control mb-4" placeholder="Comments" required ></textarea>
+                                                    <div class="modal-footer">
+                                                       <button type="submit" class="btn btn-warning btn-rounded text-white font-family-italic" >SEND</button>
+                                                       <input type="button"  class="btn btn-warning btn-rounded text-white font-family-italic" onclick="myFunction()" value="Reset form" id="resetBtn">
+                                                </div>
+                                           </form>
+                                       </div>
+                               </div>
+                          </div>
+                    </div>
+
                         <p>Lorem ipsum dolor sit amet, consectectur adipiscing ipsum dolor sit amet.</p>
                         <img class="footer-graphic" src="../img1/sword_lady_footer.png" />
                     </div>
