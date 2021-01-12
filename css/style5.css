@@ -335,7 +335,7 @@ nav ul li a:hover {
 
 /* start: tournaments styles */
 #tournaments {
-    background: url('https://onclickwebdesign.com/wp-content/uploads/footer_bg_pattern.png') 0 0 repeat;
+    background: url('../img1/footerbg_pattern.png') 0 0 repeat;
     padding: 125px 0 105px;
 }
 
@@ -401,7 +401,7 @@ nav ul li a:hover {
 
 /* start: recent reviews styles */
 #recent-reviews {
-    background: url('https://onclickwebdesign.com/wp-content/uploads/recent_reviews_bg.png') top right no-repeat;
+    background: url('../img1/swordman.png') top right no-repeat;
     background-size: cover;
     padding: 75px 0 50px;
 }
@@ -457,7 +457,7 @@ nav ul li a:hover {
 
 /* start: posts/comments styles */
 #posts-comments {
-    background: url('https://onclickwebdesign.com/wp-content/uploads/footer_bg_pattern.png') 0 0 repeat;
+    background: url('../img1/footerbg_pattern.png') 0 0 repeat;
     padding: 75px 0;
 }
 
