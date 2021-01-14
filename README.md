@@ -119,7 +119,7 @@ Technologies deployed on this project:
 
  ## Deployment
  After my User Acceptance Testing (UAT) I pushed the final version of my code to git hub , in my commit message I cataloged each change before my final push, the steps I took 
- can be seen below, my project is now live on [GitHub]( https://peristratus.github.io/bootstrap/)
+ can be seen below, my project is now live on [GitHub](https://peristratus.github.io/foxxgames/)
 
  1. Complete the User UAT evaluation and made sure that all codes are funtional and operational.
  2. Used git commit -m to catalog all my changes in line with UAT requirement.
