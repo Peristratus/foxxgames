@@ -19,6 +19,7 @@
 
          <!--Internal Css-->
         <link href="css/style5.css" rel="Stylesheet" type="text/css" />
+        <link href="css/style6.css" rel="Stylesheet" type="text/css" />
         <script type="text/javascript" src= "https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"> </script>
         <script type="text/javascript">
             (function(){
@@ -267,8 +268,11 @@
                                                     <input type="email" name ="emailaddress" id ="emailaddress" class="form-control mb-4" placeholder ="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required/>
                                                     <i class="fas fa-comment-alt"></i>
                                                     <textarea  row="20" name="projectsummary" id="summary" class="form-control mb-4" placeholder="Comments" required ></textarea>
+                                                    <div class="popup d-flex flex-row" >
+                                                      <span class="popuptext p-2" id="myPopup">We have received your message!</span>
+                                                    </div>
                                                     <div class="modal-footer">
-                                                       <button type="submit" class="btn btn-warning btn-rounded text-white font-family-italic" id="sendBtn" >SEND</button>
+                                                       <button type="submit" class="btn btn-warning btn-rounded text-white font-family-italic" id="sendBtn" onclick="myFunction2()" >SEND</button>
                                                        <input type="button"  class="btn btn-warning btn-rounded text-white font-family-italic" onclick="myFunction()" value="Reset form" id="resetBtn">
                                                 </div>
                                            </form>
@@ -406,6 +410,17 @@
           <script scr="smooth-scrooll.js"></script>
           <script> var scroll = new SmoothScroll('a[href*="#"]');
           </script>
+
+          <script>
+            function myFunction2() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+            setTimeout(function() {
+            document.getElementById("myPopup").classList.toggle("show");
+                }, 5000);
+            }
+          </script>
+
         
           <!---Reset the Contact Form-->
           <script>
